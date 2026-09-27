@@ -23,6 +23,10 @@ export default function Home() {
       <h1 className="text-3xl font-semibold">Sito Voti Attualità</h1>
       <p className="text-neutral-500">Fase 1: struttura base e connessione al database</p>
       <p className="text-sm text-neutral-400">{status}</p>
+       <div className="flex gap-4 mt-4">
+        <a href="/registrati" className="underline text-sm">Registrati</a>
+        <a href="/accedi" className="underline text-sm">Accedi</a>
+      </div>
     </main>
   );
 }
