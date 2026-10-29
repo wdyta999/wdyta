@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
+import { COUNTRIES } from "../../lib/countries";
 
 export default function Registrati() {
   const [email, setEmail] = useState("");
@@ -85,22 +86,39 @@ export default function Registrati() {
           <option value="donna">Donna</option>
           <option value="altro">Altro</option>
         </select>
-        <input
-          type="text"
-          placeholder="Luogo di nascita"
+
+        <select
           required
           value={birthPlace}
           onChange={(e) => setBirthPlace(e.target.value)}
-          className="border border-neutral-300 rounded px-3 py-2"
-        />
-        <input
-          type="text"
-          placeholder="Paese di residenza"
+          className="border border-neutral-300 rounded px-3 py-2 bg-white"
+        >
+          <option value="" disabled>
+            Luogo di nascita (nazione)
+          </option>
+          {COUNTRIES.map((c) => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
+        </select>
+
+        <select
           required
           value={country}
           onChange={(e) => setCountry(e.target.value)}
-          className="border border-neutral-300 rounded px-3 py-2"
-        />
+          className="border border-neutral-300 rounded px-3 py-2 bg-white"
+        >
+          <option value="" disabled>
+            Paese di residenza
+          </option>
+          {COUNTRIES.map((c) => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
+        </select>
+
         <button
           type="submit"
           disabled={loading}
